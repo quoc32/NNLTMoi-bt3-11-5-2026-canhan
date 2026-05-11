@@ -1,0 +1,45 @@
+############################################################
+### 1. Đăng ký tài khoản mới
+############################################################
+POST http://localhost:5000/api/auth/register
+Content-Type: application/json
+
+{
+    "username": "quoc01",
+    "email": "quoc01@example.com",
+    "password": "password123"
+}
+
+
+############################################################
+### 2. Đăng nhập
+############################################################
+POST http://localhost:5000/api/auth/login
+Content-Type: application/json
+
+{
+    "email": "quoc01@example.com",
+    "password": "password123"
+}
+
+
+############################################################
+### 3. Xem Profile (Yêu cầu JWT Token)
+### Copy token từ kết quả đăng nhập dán vào sau chữ "Bearer"
+############################################################
+GET http://localhost:5000/api/users/profile
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwidXNlcm5hbWUiOiJxdW9jMDEiLCJpYXQiOjE3Nzg0NjQ2MTIsImV4cCI6MTc3ODU1MTAxMn0.OQk-MvMBHYj2bOo-9eBpC2OUxUrPS8vL5qvEkUzsD98
+
+
+############################################################
+### 4. Chỉnh sửa Profile (Yêu cầu JWT Token)
+### Copy token từ kết quả đăng nhập dán vào sau chữ "Bearer"
+############################################################
+PUT http://localhost:5000/api/users/profile
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwidXNlcm5hbWUiOiJxdW9jMDEiLCJpYXQiOjE3Nzg0NjQ2MTIsImV4cCI6MTc3ODU1MTAxMn0.OQk-MvMBHYj2bOo-9eBpC2OUxUrPS8vL5qvEkUzsD98
+Content-Type: application/json
+
+{
+    "fullName": "Vũ Anh Quốc",
+    "bio": "I love building clean and scalable APIs with ExpressJS."
+}
