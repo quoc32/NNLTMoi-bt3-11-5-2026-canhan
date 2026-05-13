@@ -6,6 +6,10 @@ const { connectDB, sequelize } = require('./config/db');
 // Import Routes
 const authRoutes = require('./routes/authRoutes');
 const userRoutes = require('./routes/userRoutes');
+const courseRoutes = require('./routes/courseRoutes');
+
+// Import Models (Ensures associations are registered)
+require('./models');
 
 const app = express();
 
@@ -17,6 +21,7 @@ app.use(express.urlencoded({ extended: true }));
 // Routes
 app.use('/api/auth', authRoutes);
 app.use('/api/users', userRoutes);
+app.use('/api/courses', courseRoutes);
 
 // Basic route
 app.get('/', (req, res) => {

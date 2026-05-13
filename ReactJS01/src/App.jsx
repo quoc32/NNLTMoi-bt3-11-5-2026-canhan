@@ -1,36 +1,25 @@
 import React from 'react';
-import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
-import { AuthProvider } from './context/AuthContext';
-import Navbar from './components/Navbar';
-import PrivateRoute from './components/PrivateRoute';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Home from './pages/Home';
+import CourseDetail from './pages/CourseDetail';
+import SearchResults from './pages/SearchResults';
+import CoursePlayer from './pages/CoursePlayer';
 import Login from './pages/Login';
 import Register from './pages/Register';
-import Profile from './pages/Profile';
 
 function App() {
-    return (
-        <AuthProvider>
-            <Router>
-                <div className="min-h-screen bg-gray-50">
-                    <Navbar />
-                    <main className="container mx-auto">
-                        <Routes>
-                            <Route path="/login" element={<Login />} />
-                            <Route path="/register" element={<Register />} />
-                            
-                            {/* Private Routes */}
-                            <Route element={<PrivateRoute />}>
-                                <Route path="/profile" element={<Profile />} />
-                            </Route>
-
-                            {/* Redirect root to profile or login */}
-                            <Route path="/" element={<Navigate to="/profile" replace />} />
-                        </Routes>
-                    </main>
-                </div>
-            </Router>
-        </AuthProvider>
-    );
+  return (
+    <Router>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
+        <Route path="/course/:id" element={<CourseDetail />} />
+        <Route path="/learn/:id" element={<CoursePlayer />} />
+        <Route path="/courses" element={<SearchResults />} />
+      </Routes>
+    </Router>
+  );
 }
 
 export default App;

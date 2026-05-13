@@ -1,7 +1,9 @@
 # Dependencies
 node_modules/
 ExpressJS01/node_modules/
+ExpressJS01/package-lock.json
 ReactJS01/node_modules/
+ReactJS01/package-lock.json
 
 # Environment Variables
 .env
